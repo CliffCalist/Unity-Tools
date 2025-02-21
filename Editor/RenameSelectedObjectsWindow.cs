@@ -12,7 +12,7 @@ namespace WhiteArrowEditor
         private TextField _inputField;
 
 
-        [MenuItem("WhiteArrow/Tools/Rename Selected Objects")]
+        [MenuItem("Tools/WhiteArrow/Rename Selected Objects")]
         public static void ShowWindow()
         {
             GetWindow<RenameSelectedObjectsWindow>("Rename Selected Objects");
