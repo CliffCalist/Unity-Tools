@@ -1,8 +1,10 @@
 {
-    "name": "WhiteArrow RuntimeTools",
-    "rootNamespace": "WhiteArrow",
+    "name": "WhiteArrowEditor.UnityTools",
+    "rootNamespace": "WhiteArrowEditor",
     "references": [],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

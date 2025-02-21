@@ -1,7 +1,7 @@
 using System;
 using UnityEditor;
 
-namespace WhiteArrow
+namespace WhiteArrowEditor
 {
     public static class Project
     {
