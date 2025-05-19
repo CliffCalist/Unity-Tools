@@ -44,10 +44,12 @@ namespace WhiteArrow
         public int IndexOf(T item) => _items.IndexOf(item);
 
         public void Add(T item) => _items.Add(item);
+        public void AddRange(IEnumerable<T> collection) => _items.AddRange(collection.Cast<InterfaceField<T>>());
         public void Insert(int index, T item) => _items.Insert(index, item);
 
         public bool Remove(T item) => _items.Remove(item);
         public void RemoveAt(int index) => _items.RemoveAt(index);
+        public void RemoveRange(int index, int count) => _items.RemoveRange(index, count);
 
         public void Clear() => _items.Clear();
 
