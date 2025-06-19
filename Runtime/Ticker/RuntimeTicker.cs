@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,9 @@ namespace WhiteArrow
 
         public static void Register(ITickable tickable)
         {
+            if (UnityCheck.IsDestroyed(tickable))
+                throw new ArgumentNullException(nameof(tickable), "Tickable cannot be null or destroyed.");
+
             CreateInstanceIfNotExists();
 
             if (!s_tickables.Contains(tickable))
@@ -41,7 +45,19 @@ namespace WhiteArrow
         {
             var delta = Time.deltaTime;
             for (int i = 0; i < s_tickables.Count; i++)
-                s_tickables[i]?.Tick(delta);
+            {
+                var tickable = s_tickables[i];
+
+                if (UnityCheck.IsDestroyed(tickable))
+                {
+                    s_tickables.RemoveAt(i);
+                    Debug.LogWarning($"Removed destroyed tickable: {tickable}", this);
+                    i--;
+                    continue;
+                }
+
+                s_tickables[i].Tick(delta);
+            }
         }
     }
 }
