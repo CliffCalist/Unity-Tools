@@ -7,6 +7,7 @@ A library of runtime and editor utilities to simplify common tasks in Unity deve
 - **UnityCheck** — utility for safe null checks when accessing UnityEngine.Object instances through interfaces
 - **InterfaceField<T> & InterfacesList<T>** — support for serializing interface references with Inspector integration
 - **InlinePropertyAttribute** — inline display of nested serialized objects
+- **ReadOnlyAttribute** — mark fields as read-only in the Inspector
 - **Coroutines** — run coroutines without MonoBehaviours
 - **RuntimeTicker** — tick/update logic for non-MonoBehaviour objects
 
@@ -61,6 +62,13 @@ Displays the content of nested `SerializedObject` fields inline:
 ```csharp
 [InlineProperty]
 public MySubConfig Config;
+```
+
+### ReadOnlyAttribute
+Allows marking serialized fields as read-only in the Inspector.
+
+```csharp
+[SerializeField, ReadOnly] private int _debugId;
 ```
 
 ### Coroutines
