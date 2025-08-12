@@ -18,7 +18,7 @@ A library of runtime and editor utilities to simplify common tasks in Unity deve
 
 ## Installing
 
-Install via Unity Package Manager using Git URL:
+To install via UPM, use "Install package from git URL" and add the following:
 
 ```
 https://github.com/CliffCalist/Unity-Tools.git
