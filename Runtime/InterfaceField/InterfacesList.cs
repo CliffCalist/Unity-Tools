@@ -57,14 +57,29 @@ namespace WhiteArrow
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            var castedArray = array.Select(e => new InterfaceField<T>(e)).ToArray();
-            _items.CopyTo(castedArray, arrayIndex);
+            for (int i = 0; i < _items.Count; i++)
+            {
+                array[arrayIndex + i] = _items[i].Value;
+            }
         }
 
         public void CopyTo(Array array, int index)
         {
-            var castedArray = array.OfType<InterfaceField<T>>().ToArray();
-            _items.CopyTo(castedArray, index);
+            if (array is InterfaceField<T>[] target)
+            {
+                _items.CopyTo(target, index);
+            }
+            else if (array is T[] valueArray)
+            {
+                for (int i = 0; i < _items.Count; i++)
+                {
+                    valueArray[index + i] = _items[i].Value;
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Array must be of type T[] or InterfaceField<T>[]", nameof(array));
+            }
         }
 
 
